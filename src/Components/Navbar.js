@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar(props) {
     const pageTitleToAbout = ()=>{
-        document.title = "TextUtile - About";
+        document.title = "TextUtils - About";
     }
 
     const pageTitleToHome = ()=>{
