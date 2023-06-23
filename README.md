@@ -70,12 +70,12 @@ Contributions to TextUtils are welcome! If you encounter any bugs, have feature 
 
 ## License
 
-This project is licensed under the [Apache 2.0](LICENSE).
+This project is licensed under the [Apache License 2.0](LICENSE).
 
 
 ## 🚀 About Me
 
 Hi, I'm Manas Patil, the developer of TextUtils. I'm a passionate web developer with a strong interest in frontend technologies. TextUtils is my first project using React, and I had a great time learning and building this text manipulation tool. I believe in the power of simplicity and efficiency, and that's what I aimed to achieve with TextUtils.
 
-If you have any feedback, suggestions, or questions about TextUtils, feel free to reach out. You can connect with me on [LinkedIn](https://www.linkedin.com/in/manas-patil-876718250/) or [E-mail](pmanas13092004@gmail.com).
+If you have any feedback, suggestions, or questions about TextUtils, feel free to reach out. You can connect with me on [LinkedIn](https://www.linkedin.com/in/manas-patil-876718250/) or email me at pmanas13092004@gmail.com
 
