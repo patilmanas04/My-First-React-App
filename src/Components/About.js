@@ -1,46 +1,45 @@
 import React from 'react';
 
 function About(props) {
+    const lightAboutCardTheme = {
+        background: "#fff",
+    }
+
+    const darkAboutCardTheme = {
+        background: "rgba(255, 255, 255, 0.1)",
+        border: "none",
+        boxShadow: "1px 1px 6px black"
+    };
+
+    const lightListGroupItemTheme = {
+        background: "#fff"
+    }
+
+    const darkListGroupItemTheme ={
+        background: "rgba(255, 255, 255, 0.1)",
+        borderColor: "rgba(0, 0, 0, 0.45)"
+    }
+
     return (
         <>
-            <div className="container">
-                <h1 className='my-3'>{props.heading}</h1>
-                <div className="accordion" id="accordionExample">
-                    <div className="accordion-item">
-                        <h2 className="accordion-header">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Accordion Item #1
-                            </button>
-                        </h2>
-                        <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
-                                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="accordion-item">
-                        <h2 className="accordion-header">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Accordion Item #2
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="accordion-item">
-                        <h2 className="accordion-header">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Accordion Item #3
-                            </button>
-                        </h2>
-                        <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
+            <div className="container my-4">
+                <div className={`card text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightAboutCardTheme:darkAboutCardTheme}>
+                    <div className="card-body">
+                        <h1 className='card-title'>About TextUtils</h1>
+                        <p className='card-text'>TextUtils is a web app built using React JS that allows you to perform various operations on text. Whether you need to convert your text to uppercase, lowercase, capitalize it, or even alternate the case, TextUtils has got you covered.</p>
+                        <p className='card-text'>With TextUtils, you can easily manipulate your text and make it suitable for your specific needs. It provides a user-friendly interface and quick results, making it convenient for anyone working with text.</p>
+                        <h2 className="mt-4 mx-1">Features</h2>
+                        <ul className="list-group text-dark">
+                            <li className={`list-group-item text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightListGroupItemTheme:darkListGroupItemTheme}>Convert text to uppercase</li>
+                            <li className={`list-group-item text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightListGroupItemTheme:darkListGroupItemTheme}>Convert text to lowercase</li>
+                            <li className={`list-group-item text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightListGroupItemTheme:darkListGroupItemTheme}>Alternate the case of your text</li>
+                            <li className={`list-group-item text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightListGroupItemTheme:darkListGroupItemTheme}>Remove extra spaces from the text</li>
+                            <li className={`list-group-item text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightListGroupItemTheme:darkListGroupItemTheme}>Capitalize your text</li>
+                            <li className={`list-group-item text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightListGroupItemTheme:darkListGroupItemTheme}>Capitalize each word in your text</li>
+                            <li className={`list-group-item text-${props.mode==="light"?'dark':'light'}`} style={props.mode==="light"?lightListGroupItemTheme:darkListGroupItemTheme}>Copy the modified text to your clipboard</li>
+                        </ul>
+                        <p className="mt-4">TextUtils aims to make text manipulation easier and more efficient, saving you time and effort when dealing with text-related tasks. It's perfect for writers, students, developers, and anyone who frequently works with text.</p>
+                        <p className='card-text'>Start using TextUtils today and experience the power of text manipulation at your fingertips!</p>
                     </div>
                 </div>
             </div>

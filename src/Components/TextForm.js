@@ -15,18 +15,19 @@ function TextForm(props) {
         boxShadow: "1px 1px 6px black"
     };
 
-    const textArea = document.querySelector('#exampleFormControlTextarea1');
-    console.dir(textArea);
-
     const [text, setText] = useState();
+
+    console.log(text);
 
     const TextToUpperCase = ()=>{
         const newUpperCaseText = text.toUpperCase();
         setText(newUpperCaseText);
+        props.showAlert("Coverted to UpperCase!", "success");
     }
     const TextToLowerCase = ()=>{
         const newLowerCaseText = text.toLowerCase();
         setText(newLowerCaseText);
+        props.showAlert("Coverted to LowerCase!", "success");
     }
 
     const ChangeText = (e)=>{
@@ -36,34 +37,42 @@ function TextForm(props) {
     const ClearText = ()=>{
         const newtext = '';
         setText(newtext);
+        props.showAlert("Text Cleared!", "success");
     }
 
     const CopyText = ()=>{
-        const textArea = document.getElementById("exampleFormControlTextarea1");
-        textArea.select();
-        textArea.setSelectionRange(0, 99999);
-        const copyText = text;
-        navigator.clipboard.writeText(copyText);
+        try {
+            const textArea = document.getElementById("exampleFormControlTextarea1");
+            textArea.select();
+            textArea.setSelectionRange(0, 99999);
+            const copyText = text;
+            navigator.clipboard.writeText(copyText);
+            props.showAlert("Text copied to clipboard!", "success");
+        } catch (error) {
+            props.showAlert("Failed to copy text to the Clipborad", "danger");
+        }
     }
 
     const RemoveExtraSpaces = ()=>{
         let newText = text.split(/[ ]+/);
         newText = newText.join(' ');
         setText(newText);
+        props.showAlert("Extra Spaces Removed!", "success");
     }
 
     const CapitalizeText = ()=>{
         const newText = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
         setText(newText);
+        props.showAlert("Converted to Capitalized Text!", "success");
     }
 
     const CapitalizeEachWord = ()=>{
         let Text = text.split(" ");
         const newText = Text.map((e)=>{
-            console.log(e);
             return (e.charAt(0).toUpperCase() + e.slice(1).toLowerCase())
         });
         setText(newText.join(" "));
+        props.showAlert("Capitalized Each Word!", "success");
     }
 
     const TextToAlternateText = ()=>{
@@ -85,6 +94,7 @@ function TextForm(props) {
             }
         }
         setText(newText);
+        props.showAlert("Converted to Alternate Text!", "success");
     }
 
     let wordsInText = 0
@@ -120,7 +130,7 @@ function TextForm(props) {
 
             <div className="container my-4">
                 <h2>Preview Text</h2>
-                <p>{(text!=="")?text:"Type something in the above textbox to preview it here"}</p>
+                <p>{(text==="" || text===undefined)?"Type something in the above textbox to preview it here":text}</p>
             </div>
         </>
     );

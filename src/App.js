@@ -2,17 +2,30 @@ import { useState } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
-// import About from './Components/About';
-
-// background: "rgba(255, 255, 255, 0.1)";
-// border: "none";
-// color: "white";
-// height: "257px";
-// box-shadow: "2px 2px 6px black";
+import Alert from './Components/Alert';
+import About from './Components/About';
+import Footer from "./Components/Footer";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
 
 const appName = 'TextUtils';
 function App() {
     const [mode, setMode] = useState('light');
+    const [alert, setAlert] = useState(false);
+
+    const showAlert = (message, type)=>{
+        setAlert({
+            message: message,
+            type: type
+        });
+    }
+
+    const closeAlert = ()=>{
+        setAlert(false);
+    }
 
     const toggleMode = ()=>{
         if(mode==="light"){
@@ -29,12 +42,15 @@ function App() {
 
     return (
         <>
-            <Navbar appName={appName} aboutText='About Us' toggleMode={toggleMode} mode={mode} />
-
-            <TextForm heading='Enter the text here' mode={mode} />
-
-            {/* <About heading='About Us'/>   */}
-
+            <Router>
+                <Navbar appName={appName} aboutText='About Us' toggleMode={toggleMode} mode={mode} />
+                <Alert alert={alert} closeAlert={closeAlert}/>
+                <Routes>
+                    <Route exact path='/' element={<TextForm showAlert={showAlert} heading='Enter the text here' mode={mode} />} />
+                    <Route exact path='/about' element={<About heading='About Us' mode={mode}/>} />
+                </Routes>
+                <Footer mode={mode}/>
+            </Router>
         </>
     );
 }
