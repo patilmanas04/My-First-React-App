@@ -1,0 +1,7 @@
+textarea.default-placeholder-color::placeholder{
+    color: initial;
+}
+
+textarea.change-placeholder-color::placeholder{
+    color: rgb(255 255 255 / 35%)
+}

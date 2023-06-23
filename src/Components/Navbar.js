@@ -1,27 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 function Navbar(props) {
-
-    const [buttonName, setButtonName] = useState('Dark Mode');
-    const [mode, setMode] = useState("navbar navbar-expand-lg bg-body-tertiary");
-    const [theme, setTheme] = useState("light");
-
-    const switchMode = ()=>{
-        if(buttonName==="Dark Mode"){
-            setMode("navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark");
-            setButtonName("Light Mode");
-            setTheme("dark");
-        }
-        else{
-            setMode("navbar navbar-expand-lg bg-body-tertiary");
-            setButtonName("Dark Mode");
-            setTheme("light");
-        }
-    }
-
     return (
-        <nav className={mode} data-bs-theme={theme}>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme={props.mode}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">{props.appName}</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +19,10 @@ function Navbar(props) {
                         </li>
                     </ul>
                     <form className="d-flex" role="search">
-                        <button className="btn btn-primary" type='button' onClick={switchMode}>{buttonName}</button>
+                        <div className="form-check form-switch">
+                            <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
+                            <label className={`form-check-label fw-normal text-${props.mode==="light"?'dark':'light'}`} htmlFor="flexSwitchCheckDefault">{props.mode.charAt(0).toUpperCase()+props.mode.slice(1)} Mode</label>
+                        </div>
                     </form>
                 </div>
             </div>

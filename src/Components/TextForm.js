@@ -1,6 +1,23 @@
 import React, {useState} from 'react';
 
 function TextForm(props) {
+    const defaultTextAreaStyles = {
+        background: "#ffffff",
+        color: "#212529",
+        border: "1px solid #dee2e6",
+        boxShadow: "none"
+    }
+    
+    const darkTextAreaStyles = {
+        background: "rgba(255, 255, 255, 0.1)",
+        border: "none",
+        color: "white",
+        boxShadow: "1px 1px 6px black"
+    };
+
+    const textArea = document.querySelector('#exampleFormControlTextarea1');
+    console.dir(textArea);
+
     const [text, setText] = useState();
 
     const TextToUpperCase = ()=>{
@@ -53,8 +70,8 @@ function TextForm(props) {
         let newText = '';
         let index = 0;
         for(let i=0 ; i<text.length ; i++){
-            if(text[i]!=' '){
-                if(index%2==0){
+            if(text[i]!==' '){
+                if(index%2===0){
                     newText += text[i].toLowerCase();
                     index++
                 }
@@ -73,7 +90,7 @@ function TextForm(props) {
     let wordsInText = 0
     if(text){
         text.split(" ").forEach((e)=>{
-            wordsInText = (e.length!=0) ? wordsInText+=1 : wordsInText;
+            wordsInText = (e.length!==0) ? wordsInText+=1 : wordsInText;
         });
     }
     let charatersInText = (text) ? text.length : 0;
@@ -84,7 +101,7 @@ function TextForm(props) {
             <div className="container my-3">
                 <h1>{props.heading}</h1>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text} id="exampleFormControlTextarea1" placeholder="Type or paste your text here" rows="10" onChange={ChangeText}></textarea>
+                    <textarea className={`form-control ${props.mode==="light"?"default":"change"}-placeholder-color`} value={text} id="exampleFormControlTextarea1" placeholder="Type or paste your text here" rows="10" onChange={ChangeText} style={props.mode==="light"?defaultTextAreaStyles:darkTextAreaStyles}></textarea>
                 </div>
                 <button className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToUpperCase}>Convert to UpperCase</button>
                 <button className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToLowerCase}>Convert to LowerCase</button>
@@ -103,7 +120,7 @@ function TextForm(props) {
 
             <div className="container my-4">
                 <h2>Preview Text</h2>
-                <p>{text}</p>
+                <p>{(text!=="")?text:"Type something in the above textbox to preview it here"}</p>
             </div>
         </>
     );
