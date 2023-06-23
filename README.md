@@ -70,7 +70,7 @@ Contributions to TextUtils are welcome! If you encounter any bugs, have feature 
 
 ## License
 
-This project is licensed under the [Apache 2.0](LICENSE).
+This project is licensed under the [Apache License 2.0](LICENSE).
 
 
 ## 🚀 About Me
