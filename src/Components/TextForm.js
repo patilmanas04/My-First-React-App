@@ -17,8 +17,6 @@ function TextForm(props) {
 
     const [text, setText] = useState();
 
-    console.log(text);
-
     const TextToUpperCase = ()=>{
         const newUpperCaseText = text.toUpperCase();
         setText(newUpperCaseText);
