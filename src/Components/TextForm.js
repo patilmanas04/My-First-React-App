@@ -111,14 +111,14 @@ function TextForm(props) {
                 <div className="mb-3">
                     <textarea className={`form-control ${props.mode==="light"?"default":"change"}-placeholder-color`} value={text} id="exampleFormControlTextarea1" placeholder="Type or paste your text here" rows="10" onChange={ChangeText} style={props.mode==="light"?defaultTextAreaStyles:darkTextAreaStyles}></textarea>
                 </div>
-                <button className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToUpperCase}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToLowerCase}>Convert to LowerCase</button>
-                <button className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToAlternateText}>aLrErNaTe TeXt</button>
-                <button className="btn btn-primary mx-1 my-2 btn-sm" type='button' onClick={RemoveExtraSpaces}>Remove Extra Spaces</button>
-                <button className="btn btn-primary mx-1 my-2 btn-sm" type='button' onClick={CapitalizeText}>Capitalize Text</button>
-                <button className="btn btn-primary mx-1 my-2 btn-sm" type='button' onClick={CapitalizeEachWord}>Capitalize Each Word</button>
-                <button className="btn btn-success mx-1 my-2 btn-sm" onClick={CopyText}>Copy Text</button>
-                <button type="button" className="btn btn-dark mx-1 my-2 btn-sm" onClick={ClearText}>Clear Text</button>
+                <button disabled={text===undefined || text.length===0} className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToUpperCase}>Convert to UpperCase</button>
+                <button disabled={text===undefined || text.length===0} className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToLowerCase}>Convert to LowerCase</button>
+                <button disabled={text===undefined || text.length===0} className="btn btn-primary mx-1 my-2 btn-sm" onClick={TextToAlternateText}>aLrErNaTe TeXt</button>
+                <button disabled={text===undefined || text.length===0} className="btn btn-primary mx-1 my-2 btn-sm" type='button' onClick={RemoveExtraSpaces}>Remove Extra Spaces</button>
+                <button disabled={text===undefined || text.length===0} className="btn btn-primary mx-1 my-2 btn-sm" type='button' onClick={CapitalizeText}>Capitalize Text</button>
+                <button disabled={text===undefined || text.length===0} className="btn btn-primary mx-1 my-2 btn-sm" type='button' onClick={CapitalizeEachWord}>Capitalize Each Word</button>
+                <button disabled={text===undefined || text.length===0} className="btn btn-success mx-1 my-2 btn-sm" onClick={CopyText}>Copy Text</button>
+                <button disabled={text===undefined || text.length===0} type="button" className="btn btn-dark mx-1 my-2 btn-sm" onClick={ClearText}>Clear Text</button>
             </div>
 
             <div className="container my-3">
