@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function Navbar(props) {
+    const [homeStatus, setHomeStatus] = useState(true);
+    const [aboutStatus, setAboutStatus] = useState(false);
+
     const pageTitleToAbout = ()=>{
         document.title = "TextUtils - About";
+        setHomeStatus(false);
+        setAboutStatus(true);
     }
 
     const pageTitleToHome = ()=>{
         document.title = "TextUtils - Home";
+        setHomeStatus(true);
+        setAboutStatus(false);
     }
 
     return (
@@ -21,10 +28,10 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" onClick={pageTitleToHome} to="/">Home</Link>
+                            <Link className={`nav-link ${homeStatus?'active':'nothing'}`} aria-current="page" id='home-title' onClick={pageTitleToHome} to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" onClick={pageTitleToAbout} to="/about">{props.aboutText}</Link>
+                            <Link className={`nav-link ${aboutStatus?'active':'nothing'}`} onClick={pageTitleToAbout} to="/about">{props.aboutText}</Link>
                         </li>
                     </ul>
                     <form className="d-flex" role="search">
@@ -45,8 +52,8 @@ Navbar.propTypes = {
 }
 
 Navbar.defaultProps = {
-    appName: 'Your App name here',
-    aboutText: 'Your About Text goes here'
+    appName: 'TextUtils',
+    aboutText: 'About Us'
 }
 
 export default Navbar;
